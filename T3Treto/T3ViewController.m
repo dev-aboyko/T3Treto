@@ -8,28 +8,31 @@
 
 #import "T3ViewController.h"
 
-/*
- http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/01.jpg
- http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/02.jpg
- http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/03.jpg
- http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/05.jpg
- http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/08.jpg
- */
-
 @interface T3ViewController ()
 
 @property (nonatomic) T3ImageDownloader* imageDownloader;
+@property (nonatomic) NSArray* url;
 
 @end
 
 @implementation T3ViewController
 
-@synthesize imageDownloader;
+@synthesize imageDownloader, url;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     imageDownloader = [[T3ImageDownloader alloc] initWithDelegate:self];
+    [self initUrls];
+}
+
+- (void) initUrls
+{
+    url = [[NSArray alloc] initWithObjects:[NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/01.jpg"],
+                                           [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/02.jpg"],
+                                           [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/02.jpg"],
+                                           [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/05.jpg"],
+                                           [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/08.jpg"], nil];
 }
 
 - (void)didReceiveMemoryWarning
