@@ -32,6 +32,8 @@
     NSURL* nsURL = [[NSURL alloc] initWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:nsURL];
     NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    [nsURL release];
+    [request release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)urlResponse
@@ -66,6 +68,7 @@
 
 - (void) dealloc
 {
+    [super dealloc];
     [self.imageData release];
 }
 
