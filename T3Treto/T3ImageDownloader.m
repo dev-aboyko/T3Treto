@@ -45,6 +45,7 @@
     NSNumber *length = [formatter numberFromString:lengthString];
     self.totalBytes = length.unsignedIntegerValue;
     self.imageData = [[NSMutableData alloc] initWithCapacity:self.totalBytes];
+    [formatter release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
