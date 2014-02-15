@@ -56,11 +56,17 @@
 {
     UIImage* image = [UIImage imageWithData:self.imageData];
     [self.delegate imageDownloadFinished:image];
+    [image release];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     [self.delegate imageDownloadError];
+}
+
+- (void) dealloc
+{
+    [self.imageData release];
 }
 
 @end
