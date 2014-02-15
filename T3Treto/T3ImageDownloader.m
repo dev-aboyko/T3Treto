@@ -25,9 +25,12 @@
     return self;
 }
 
-- (void) downloadFrom:(NSURL*)url
+- (void) downloadFrom:(NSString*)url
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSLog(@"downloadFrom:%@", url);
+    
+    NSURL* nsURL = [[NSURL alloc] initWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:nsURL];
     NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 }
 

@@ -31,36 +31,23 @@
 
 - (void) initUrls
 {
-    NSURL* url1 = [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/01.jpg"];
-    NSURL* url2 = [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/02.jpg"];
-    NSURL* url3 = [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/02.jpg"];
-    NSURL* url4 = [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/05.jpg"];
-    NSURL* url5 = [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/08.jpg"];
-    url = [[NSArray alloc] initWithObjects: url1, url2, url3, url4, url5, nil];
-    [url1 release];
-    [url2 release];
-    [url3 release];
-    [url4 release];
-    [url5 release];
+    url = [[NSArray alloc] initWithObjects:
+           @"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/01.jpg",
+           @"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/02.jpg",
+           @"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/03.jpg",
+           @"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/05.jpg",
+           @"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/08.jpg", nil];
 }
 
 - (void) initScrollView
 {
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     scrollView.pagingEnabled = YES;
-    NSInteger numberOfViews = 3;
-    for (int i = 0; i < numberOfViews; i++)
-    {
-        CGFloat xOrigin = i * self.view.frame.size.width;
-        UIView *awesomeView = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
-        [scrollView addSubview:awesomeView];
-        [awesomeView release];
-    }
+    NSInteger numberOfViews = url.count;
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height);
     scrollView.delegate = self;
     [self.view addSubview:scrollView];
-//    [self loadImageOnPage:1];
+    [self loadImageOnPage:0];
 }
 
 - (void) loadImageOnPage:(NSInteger) page

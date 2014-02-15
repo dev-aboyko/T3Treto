@@ -21,6 +21,6 @@
 @property (nonatomic, assign) id<T3ImageDownloaderDelegate> delegate;
 
 - (id) initWithDelegate:(id<T3ImageDownloaderDelegate>) delegate;
-- (void) downloadFrom:(NSURL*) url;
+- (void) downloadFrom:(NSString*) url;
 
 @end
