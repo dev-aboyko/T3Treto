@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface T3ViewController : UIViewController
+@interface T3ViewController : UIViewController <NSURLConnectionDataDelegate>
 
 @end
