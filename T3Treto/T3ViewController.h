@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "T3ImageDownloader.h"
 
-@interface T3ViewController : UIViewController <NSURLConnectionDataDelegate>
+@interface T3ViewController : UIViewController <T3ImageDownloaderDelegate>
 
 @end

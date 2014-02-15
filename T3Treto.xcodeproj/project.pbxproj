@@ -21,6 +21,7 @@
 		7721C57918AEFA4200DA4846 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7721C55B18AEFA4200DA4846 /* UIKit.framework */; };
 		7721C58118AEFA4200DA4846 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7721C57F18AEFA4200DA4846 /* InfoPlist.strings */; };
 		7721C58318AEFA4200DA4846 /* T3TretoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7721C58218AEFA4200DA4846 /* T3TretoTests.m */; };
+		7721C58E18AF68A400DA4846 /* T3ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7721C58D18AF68A400DA4846 /* T3ImageDownloader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		7721C57E18AEFA4200DA4846 /* T3TretoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "T3TretoTests-Info.plist"; sourceTree = "<group>"; };
 		7721C58018AEFA4200DA4846 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7721C58218AEFA4200DA4846 /* T3TretoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = T3TretoTests.m; sourceTree = "<group>"; };
+		7721C58C18AF68A400DA4846 /* T3ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3ImageDownloader.h; sourceTree = "<group>"; };
+		7721C58D18AF68A400DA4846 /* T3ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3ImageDownloader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				7721C56918AEFA4200DA4846 /* Main.storyboard */,
 				7721C56C18AEFA4200DA4846 /* T3ViewController.h */,
 				7721C56D18AEFA4200DA4846 /* T3ViewController.m */,
+				7721C58C18AF68A400DA4846 /* T3ImageDownloader.h */,
+				7721C58D18AF68A400DA4846 /* T3ImageDownloader.m */,
 				7721C56F18AEFA4200DA4846 /* Images.xcassets */,
 				7721C55E18AEFA4200DA4846 /* Supporting Files */,
 			);
@@ -253,6 +258,7 @@
 				7721C56E18AEFA4200DA4846 /* T3ViewController.m in Sources */,
 				7721C56418AEFA4200DA4846 /* main.m in Sources */,
 				7721C56818AEFA4200DA4846 /* T3AppDelegate.m in Sources */,
+				7721C58E18AF68A400DA4846 /* T3ImageDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
