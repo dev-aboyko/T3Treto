@@ -18,15 +18,17 @@
 
 @interface T3ViewController ()
 
-@property (nonatomic) T3ImageDownloader* imageDownloader;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (strong, nonatomic) T3ImageDownloader* imageDownloader;
+@property (nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic) IBOutlet UIProgressView *progressView;
 
 @end
 
 @implementation T3ViewController
 
-@synthesize imageDownloader, imageView, progressView;
+@synthesize imageDownloader;
+@synthesize imageView;
+@synthesize progressView;
 
 - (void)viewDidLoad
 {
