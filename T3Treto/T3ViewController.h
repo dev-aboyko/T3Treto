@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "T3ImageDownloader.h"
 
-@interface T3ViewController : UIViewController <T3ImageDownloaderDelegate>
+@interface T3ViewController : UIViewController <T3ImageDownloaderDelegate, UIScrollViewDelegate>
 
 @end

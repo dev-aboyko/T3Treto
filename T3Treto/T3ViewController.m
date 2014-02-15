@@ -12,27 +12,21 @@
 
 @property (retain, nonatomic) T3ImageDownloader* imageDownloader;
 @property (retain, nonatomic) NSArray* url;
-@property (retain, nonatomic) UIScrollView* scroll;
+@property (retain, nonatomic) UIScrollView* scrollView;
+@property (retain, nonatomic) UIProgressView* progressView;
 
 @end
 
 @implementation T3ViewController
 
-@synthesize imageDownloader, url, scroll;
+@synthesize imageDownloader, url, scrollView, progressView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     imageDownloader = [[T3ImageDownloader alloc] initWithDelegate:self];
     [self initUrls];
-    [self initScroll];
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    NSLog(@"_scroll.scrollEnabled = %d", scroll.scrollEnabled);
-    NSLog(@"_scroll.contentSize %f, %f", scroll.contentSize.width, scroll.contentSize.height);
+    [self initScrollView];
 }
 
 - (void) initUrls
@@ -50,20 +44,32 @@
     [url5 release];
 }
 
-- (void) initScroll
+- (void) initScrollView
 {
-    scroll = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    scroll.pagingEnabled = YES;
+    scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    scrollView.pagingEnabled = YES;
     NSInteger numberOfViews = 3;
-    for (int i = 0; i < numberOfViews; i++) {
+    for (int i = 0; i < numberOfViews; i++)
+    {
         CGFloat xOrigin = i * self.view.frame.size.width;
         UIView *awesomeView = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
         awesomeView.backgroundColor = [UIColor colorWithRed:0.5/i green:0.5 blue:0.5 alpha:1];
-        [scroll addSubview:awesomeView];
+        [scrollView addSubview:awesomeView];
         [awesomeView release];
     }
-    scroll.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height);
-    [self.view addSubview:scroll];
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height);
+    scrollView.delegate = self;
+    [self.view addSubview:scrollView];
+//    [self loadImageOnPage:1];
+}
+
+- (void) loadImageOnPage:(NSInteger) page
+{
+    [imageDownloader downloadFrom:url[page]];
+    NSInteger xOrigin = page * self.view.frame.size.width;
+    progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(xOrigin, self.view.frame.size.height / 2, self.view.frame.size.width, 5)];
+    [progressView setProgress:0];
+    [scrollView addSubview:progressView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,16 +77,35 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void) imageDownloadProgress: (float) progress;
+- (void) imageDownloadProgress: (float) progress
 {
+    [progressView setProgress:progress];
 }
 
-- (void) imageDownloadFinished:(UIImage*) image;
+- (void) imageDownloadFinished:(UIImage*) image
 {
+    NSInteger page = scrollView.contentOffset.x / self.view.frame.size.width;
+    NSInteger xOrigin = page * self.view.frame.size.width;
+    CGRect frame = CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height);
+    UIImageView* imageView = [[UIImageView alloc] initWithFrame:frame];
+    imageView.image = image;
+    [progressView removeFromSuperview];
+    [scrollView addSubview:imageView];
+    [imageView release];
+    [progressView release];
 }
 
 - (void) imageDownloadError
 {
+    [progressView removeFromSuperview];
+    [progressView release];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll
+{
+    NSLog(@"scrollViewDidEndDecelerating");
+    NSInteger page = scrollView.contentOffset.x / self.view.frame.size.width;
+    [self loadImageOnPage:page];
 }
 
 - (void)dealloc
@@ -91,7 +116,6 @@
     }
     [url release];
     [imageDownloader release];
-    [scroll release];
     [super dealloc];
 }
 @end
