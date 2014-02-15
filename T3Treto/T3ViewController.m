@@ -20,7 +20,6 @@
 
 @property (nonatomic) NSMutableData *imageData;
 @property (nonatomic) NSUInteger totalBytes;
-@property (nonatomic) NSUInteger receivedBytes;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
@@ -46,7 +45,7 @@
 {
     NSURL *url = [NSURL URLWithString:@"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/01.jpg"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)urlResponse
@@ -63,9 +62,9 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [self.imageData appendData:data];
-    self.receivedBytes += data.length;
-    NSLog(@"didReceiveData. Length: %d, total: %d", data.length, self.imageData.length);
-    [progressView setProgress:(self.receivedBytes / self.totalBytes)];
+    float progress = (float)self.imageData.length / (float)self.totalBytes;
+    NSLog(@"didReceiveData. Length %d, progress %f", data.length, progress);
+    [progressView setProgress:progress animated:YES];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
