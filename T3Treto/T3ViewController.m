@@ -13,6 +13,7 @@
 @property (retain, nonatomic) T3ImageDownloader* imageDownloader;
 @property (retain, nonatomic) NSArray* url;
 @property (retain, nonatomic) UIScrollView* scrollView;
+@property (assign, nonatomic) UIImageView* imageView;
 //@property (retain, nonatomic) UIProgressView* progressView;
 
 @end
@@ -25,11 +26,11 @@
 {
     [super viewDidLoad];
     imageDownloader = [[T3ImageDownloader alloc] initWithDelegate:self];
-    [self initUrls];
-    [self initScrollView];
+    [self addUrls];
+    [self addScrollView];
 }
 
-- (void) initUrls
+- (void) addUrls
 {
     url = [[NSArray alloc] initWithObjects:
            @"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/01.jpg",
@@ -39,24 +40,41 @@
            @"http://treto.ru/img_lb/Settecento/.IT/per_sito/ambienti/08.jpg", nil];
 }
 
-- (void) initScrollView
+- (void) addScrollView
 {
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     scrollView.pagingEnabled = YES;
-    NSInteger numberOfViews = url.count;
+    NSUInteger numberOfViews = url.count;
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height);
     scrollView.delegate = self;
     [self.view addSubview:scrollView];
+    [self addImageViews:numberOfViews];
     [self loadImageOnPage:0];
+}
+
+- (void) addImageViews:(NSUInteger) numberOfViews
+{
+    for (NSUInteger page = 0; page != numberOfViews; ++page)
+    {
+        NSInteger xOrigin = page * self.view.frame.size.width;
+        CGRect frame = CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height);
+        UIImageView* imageView = [[UIImageView alloc] initWithFrame:frame];
+        [scrollView addSubview:imageView];
+        [imageView release];
+    }
 }
 
 - (void) loadImageOnPage:(NSInteger) page
 {
-    [imageDownloader downloadFrom:url[page]];
+    self.imageView = (UIImageView*)[self.scrollView.subviews objectAtIndex:page];
+    if (self.imageView.image == nil)
+    {
+        [imageDownloader downloadFrom:url[page]];
 //    NSInteger xOrigin = page * self.view.frame.size.width;
 //    progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(xOrigin, self.view.frame.size.height / 2, self.view.frame.size.width, 5)];
 //    [progressView setProgress:0];
 //    [scrollView addSubview:progressView];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,14 +89,10 @@
 
 - (void) imageDownloadFinished:(UIImage*) image
 {
-    NSInteger page = scrollView.contentOffset.x / self.view.frame.size.width;
-    NSInteger xOrigin = page * self.view.frame.size.width;
-    CGRect frame = CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height);
-    UIImageView* imageView = [[UIImageView alloc] initWithFrame:frame];
-    imageView.image = image;
+    self.imageView.image = image;
 //    [progressView removeFromSuperview];
-    [scrollView addSubview:imageView];
-    [imageView release];
+//    [scrollView addSubview:imageView];
+//    [imageView release];
 //    [progressView release];
 }
 
