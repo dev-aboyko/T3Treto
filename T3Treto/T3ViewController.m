@@ -28,6 +28,8 @@
     imageDownloader = [[T3ImageDownloader alloc] initWithDelegate:self];
     [self addUrls];
     [self addScrollView];
+    [self addImageViews:url.count];
+    [self loadImageOnPage:0];
 }
 
 - (void) addUrls
@@ -48,8 +50,6 @@
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height);
     scrollView.delegate = self;
     [self.view addSubview:scrollView];
-    [self addImageViews:numberOfViews];
-    [self loadImageOnPage:0];
 }
 
 - (void) addImageViews:(NSUInteger) numberOfViews
