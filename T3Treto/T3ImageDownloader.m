@@ -18,8 +18,6 @@
 
 @implementation T3ImageDownloader
 
-@synthesize connection;
-
 - (id) initWithDelegate:(id<T3ImageDownloaderDelegate>) delegate
 {
     self = [super init];
