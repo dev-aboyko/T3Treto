@@ -27,8 +27,6 @@
 
 - (void) downloadFrom:(NSString*)url
 {
-    NSLog(@"downloadFrom:%@", url);
-    
     NSURL* nsURL = [[NSURL alloc] initWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:nsURL];
     NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
