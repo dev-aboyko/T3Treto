@@ -27,11 +27,9 @@
 
 - (void) downloadFrom:(NSString*)url
 {
-    NSURL* nsURL = [[NSURL alloc] initWithString:url];
-    NSURLRequest *request = [NSURLRequest requestWithURL:nsURL];
+    NSURL* nsURL = [[[NSURL alloc] initWithString:url] autorelease];
+    NSURLRequest *request = [[NSURLRequest requestWithURL:nsURL] autorelease];
     NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
-    [nsURL release];
-    [request release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)urlResponse
@@ -39,11 +37,10 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) urlResponse;
     NSDictionary *dict = httpResponse.allHeaderFields;
     NSString *lengthString = [dict valueForKey:@"Content-Length"];
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
     NSNumber *length = [formatter numberFromString:lengthString];
     self.totalBytes = length.unsignedIntegerValue;
     self.imageData = [[NSMutableData alloc] initWithCapacity:self.totalBytes];
-    [formatter release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
