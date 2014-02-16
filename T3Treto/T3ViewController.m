@@ -59,6 +59,7 @@
         NSInteger xOrigin = page * self.view.frame.size.width;
         CGRect frame = CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height);
         UIImageView* imageView = [[UIImageView alloc] initWithFrame:frame];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
         [scrollView addSubview:imageView];
         [imageView release];
     }
@@ -108,19 +109,15 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll
 {
-    NSLog(@"scrollViewDidEndDecelerating");
     NSInteger page = scrollView.contentOffset.x / self.view.frame.size.width;
     [self loadImageOnPage:page];
 }
 
 - (void)dealloc
 {
-    for (NSURL* u in url)
-    {
-        [u release];
-    }
     [url release];
     [imageDownloader release];
+    [scrollView release];
     [super dealloc];
 }
 @end
