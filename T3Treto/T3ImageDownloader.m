@@ -12,10 +12,13 @@
 
 @property (nonatomic) NSMutableData *imageData;
 @property (nonatomic) NSUInteger totalBytes;
+@property (nonatomic) NSURLConnection* connection;
 
 @end
 
 @implementation T3ImageDownloader
+
+@synthesize connection;
 
 - (id) initWithDelegate:(id<T3ImageDownloaderDelegate>) delegate
 {
@@ -27,9 +30,11 @@
 
 - (void) downloadFrom:(NSString*)url
 {
-    NSURL* nsURL = [[[NSURL alloc] initWithString:url] autorelease];
-    NSURLRequest *request = [[NSURLRequest requestWithURL:nsURL] autorelease];
-    NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    NSURL* nsURL = [[NSURL alloc] initWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:nsURL];
+    [self.connection release];
+    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    [nsURL release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)urlResponse
@@ -40,6 +45,7 @@
     NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
     NSNumber *length = [formatter numberFromString:lengthString];
     self.totalBytes = length.unsignedIntegerValue;
+    [self.imageData release];
     self.imageData = [[NSMutableData alloc] initWithCapacity:self.totalBytes];
 }
 
@@ -52,9 +58,10 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    [self.delegate imageDownloadFinished:nil];
+
     UIImage* image = [UIImage imageWithData:self.imageData];
     [self.delegate imageDownloadFinished:image];
-    [image release];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -64,8 +71,9 @@
 
 - (void) dealloc
 {
-    [super dealloc];
     [self.imageData release];
+    [self.connection release];
+    [super dealloc];
 }
 
 @end
