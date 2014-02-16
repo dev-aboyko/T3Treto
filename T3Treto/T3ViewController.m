@@ -7,6 +7,7 @@
 //
 
 #import "T3ViewController.h"
+#import "T3ScrollView.h"
 
 @interface T3ViewController ()
 
@@ -44,10 +45,11 @@
 
 - (void) addScrollView
 {
-    scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    scrollView = [[T3ScrollView alloc] initWithFrame:self.view.frame];
     scrollView.pagingEnabled = YES;
     NSUInteger numberOfViews = url.count;
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height);
+    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     scrollView.delegate = self;
     [self.view addSubview:scrollView];
 }
