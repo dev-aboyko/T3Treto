@@ -14,7 +14,7 @@
 @property (retain, nonatomic) NSArray* url;
 @property (retain, nonatomic) UIScrollView* scrollView;
 @property (assign, nonatomic) UIImageView* imageView;
-//@property (retain, nonatomic) UIProgressView* progressView;
+@property (assign, nonatomic) UIProgressView* progressView;
 
 @end
 
@@ -69,11 +69,13 @@
     self.imageView = (UIImageView*)[self.scrollView.subviews objectAtIndex:page];
     if (self.imageView.image == nil)
     {
+        NSInteger xOrigin = page * self.view.frame.size.width;
+        CGRect frame = CGRectMake(xOrigin, self.view.frame.size.height / 2, self.view.frame.size.width, 5);
+        self.progressView = [[UIProgressView alloc] initWithFrame:frame];
+        [self.progressView setProgress:0];
+        [self.scrollView addSubview:self.progressView];
+        self.scrollView.scrollEnabled = NO;
         [imageDownloader downloadFrom:url[page]];
-//    NSInteger xOrigin = page * self.view.frame.size.width;
-//    progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(xOrigin, self.view.frame.size.height / 2, self.view.frame.size.width, 5)];
-//    [progressView setProgress:0];
-//    [scrollView addSubview:progressView];
     }
 }
 
@@ -84,22 +86,24 @@
 
 - (void) imageDownloadProgress: (float) progress
 {
-//    [progressView setProgress:progress];
+    [self.progressView setProgress:progress];
 }
 
 - (void) imageDownloadFinished:(UIImage*) image
 {
     self.imageView.image = image;
-//    [progressView removeFromSuperview];
-//    [scrollView addSubview:imageView];
-//    [imageView release];
-//    [progressView release];
+    [self.progressView removeFromSuperview];
+    [self.progressView release];
+    self.progressView = nil;
+    self.scrollView.scrollEnabled = YES;
 }
 
 - (void) imageDownloadError
 {
-//    [progressView removeFromSuperview];
-//    [progressView release];
+    [self.progressView removeFromSuperview];
+    [self.progressView release];
+    self.progressView = nil;
+    self.scrollView.scrollEnabled = YES;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll
