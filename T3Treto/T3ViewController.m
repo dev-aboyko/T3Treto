@@ -13,13 +13,13 @@
 @property (retain, nonatomic) T3ImageDownloader* imageDownloader;
 @property (retain, nonatomic) NSArray* url;
 @property (retain, nonatomic) UIScrollView* scrollView;
-@property (retain, nonatomic) UIProgressView* progressView;
+//@property (retain, nonatomic) UIProgressView* progressView;
 
 @end
 
 @implementation T3ViewController
 
-@synthesize imageDownloader, url, scrollView, progressView;
+@synthesize imageDownloader, url, scrollView;
 
 - (void)viewDidLoad
 {
@@ -53,10 +53,10 @@
 - (void) loadImageOnPage:(NSInteger) page
 {
     [imageDownloader downloadFrom:url[page]];
-    NSInteger xOrigin = page * self.view.frame.size.width;
-    progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(xOrigin, self.view.frame.size.height / 2, self.view.frame.size.width, 5)];
-    [progressView setProgress:0];
-    [scrollView addSubview:progressView];
+//    NSInteger xOrigin = page * self.view.frame.size.width;
+//    progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(xOrigin, self.view.frame.size.height / 2, self.view.frame.size.width, 5)];
+//    [progressView setProgress:0];
+//    [scrollView addSubview:progressView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,7 +66,7 @@
 
 - (void) imageDownloadProgress: (float) progress
 {
-    [progressView setProgress:progress];
+//    [progressView setProgress:progress];
 }
 
 - (void) imageDownloadFinished:(UIImage*) image
@@ -76,16 +76,16 @@
     CGRect frame = CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height);
     UIImageView* imageView = [[UIImageView alloc] initWithFrame:frame];
     imageView.image = image;
-    [progressView removeFromSuperview];
+//    [progressView removeFromSuperview];
     [scrollView addSubview:imageView];
     [imageView release];
-    [progressView release];
+//    [progressView release];
 }
 
 - (void) imageDownloadError
 {
-    [progressView removeFromSuperview];
-    [progressView release];
+//    [progressView removeFromSuperview];
+//    [progressView release];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll
