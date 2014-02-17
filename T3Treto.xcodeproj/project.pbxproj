@@ -16,23 +16,8 @@
 		7721C56B18AEFA4200DA4846 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7721C56918AEFA4200DA4846 /* Main.storyboard */; };
 		7721C56E18AEFA4200DA4846 /* T3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7721C56D18AEFA4200DA4846 /* T3ViewController.m */; };
 		7721C57018AEFA4200DA4846 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7721C56F18AEFA4200DA4846 /* Images.xcassets */; };
-		7721C57718AEFA4200DA4846 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7721C57618AEFA4200DA4846 /* XCTest.framework */; };
-		7721C57818AEFA4200DA4846 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7721C55718AEFA4200DA4846 /* Foundation.framework */; };
-		7721C57918AEFA4200DA4846 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7721C55B18AEFA4200DA4846 /* UIKit.framework */; };
-		7721C58118AEFA4200DA4846 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7721C57F18AEFA4200DA4846 /* InfoPlist.strings */; };
-		7721C58318AEFA4200DA4846 /* T3TretoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7721C58218AEFA4200DA4846 /* T3TretoTests.m */; };
 		7721C58E18AF68A400DA4846 /* T3ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7721C58D18AF68A400DA4846 /* T3ImageDownloader.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7721C57A18AEFA4200DA4846 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7721C54C18AEFA4200DA4846 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7721C55318AEFA4200DA4846;
-			remoteInfo = T3Treto;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7721C55418AEFA4200DA4846 /* T3Treto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = T3Treto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,7 +34,6 @@
 		7721C56C18AEFA4200DA4846 /* T3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = T3ViewController.h; sourceTree = "<group>"; };
 		7721C56D18AEFA4200DA4846 /* T3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = T3ViewController.m; sourceTree = "<group>"; };
 		7721C56F18AEFA4200DA4846 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7721C57518AEFA4200DA4846 /* T3TretoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = T3TretoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7721C57618AEFA4200DA4846 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		7721C57E18AEFA4200DA4846 /* T3TretoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "T3TretoTests-Info.plist"; sourceTree = "<group>"; };
 		7721C58018AEFA4200DA4846 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -66,16 +50,6 @@
 				7721C55A18AEFA4200DA4846 /* CoreGraphics.framework in Frameworks */,
 				7721C55C18AEFA4200DA4846 /* UIKit.framework in Frameworks */,
 				7721C55818AEFA4200DA4846 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7721C57218AEFA4200DA4846 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7721C57718AEFA4200DA4846 /* XCTest.framework in Frameworks */,
-				7721C57918AEFA4200DA4846 /* UIKit.framework in Frameworks */,
-				7721C57818AEFA4200DA4846 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				7721C55418AEFA4200DA4846 /* T3Treto.app */,
-				7721C57518AEFA4200DA4846 /* T3TretoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,24 +150,6 @@
 			productReference = 7721C55418AEFA4200DA4846 /* T3Treto.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7721C57418AEFA4200DA4846 /* T3TretoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7721C58918AEFA4200DA4846 /* Build configuration list for PBXNativeTarget "T3TretoTests" */;
-			buildPhases = (
-				7721C57118AEFA4200DA4846 /* Sources */,
-				7721C57218AEFA4200DA4846 /* Frameworks */,
-				7721C57318AEFA4200DA4846 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7721C57B18AEFA4200DA4846 /* PBXTargetDependency */,
-			);
-			name = T3TretoTests;
-			productName = T3TretoTests;
-			productReference = 7721C57518AEFA4200DA4846 /* T3TretoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -204,11 +159,6 @@
 				CLASSPREFIX = T3;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Alexey Boyko";
-				TargetAttributes = {
-					7721C57418AEFA4200DA4846 = {
-						TestTargetID = 7721C55318AEFA4200DA4846;
-					};
-				};
 			};
 			buildConfigurationList = 7721C54F18AEFA4200DA4846 /* Build configuration list for PBXProject "T3Treto" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -224,7 +174,6 @@
 			projectRoot = "";
 			targets = (
 				7721C55318AEFA4200DA4846 /* T3Treto */,
-				7721C57418AEFA4200DA4846 /* T3TretoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,14 +186,6 @@
 				7721C57018AEFA4200DA4846 /* Images.xcassets in Resources */,
 				7721C56218AEFA4200DA4846 /* InfoPlist.strings in Resources */,
 				7721C56B18AEFA4200DA4846 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7721C57318AEFA4200DA4846 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7721C58118AEFA4200DA4846 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,23 +203,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7721C57118AEFA4200DA4846 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7721C58318AEFA4200DA4846 /* T3TretoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7721C57B18AEFA4200DA4846 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7721C55318AEFA4200DA4846 /* T3Treto */;
-			targetProxy = 7721C57A18AEFA4200DA4846 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7721C56018AEFA4200DA4846 /* InfoPlist.strings */ = {
@@ -408,48 +333,6 @@
 			};
 			name = Release;
 		};
-		7721C58A18AEFA4200DA4846 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/T3Treto.app/T3Treto";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "T3Treto/T3Treto-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "T3TretoTests/T3TretoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		7721C58B18AEFA4200DA4846 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/T3Treto.app/T3Treto";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "T3Treto/T3Treto-Prefix.pch";
-				INFOPLIST_FILE = "T3TretoTests/T3TretoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -467,15 +350,6 @@
 			buildConfigurations = (
 				7721C58718AEFA4200DA4846 /* Debug */,
 				7721C58818AEFA4200DA4846 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7721C58918AEFA4200DA4846 /* Build configuration list for PBXNativeTarget "T3TretoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7721C58A18AEFA4200DA4846 /* Debug */,
-				7721C58B18AEFA4200DA4846 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
