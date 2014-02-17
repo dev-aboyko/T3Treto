@@ -10,6 +10,7 @@
 
 @interface T3ImageDownloader()
 
+@property (nonatomic, assign) id<T3ImageDownloaderDelegate> delegate;
 @property (nonatomic) NSMutableData *imageData;
 @property (nonatomic) NSUInteger totalBytes;
 @property (nonatomic) NSURLConnection* connection;

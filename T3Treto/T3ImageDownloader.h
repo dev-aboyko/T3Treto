@@ -18,8 +18,6 @@
 
 @interface T3ImageDownloader : NSObject <NSURLConnectionDataDelegate>
 
-@property (nonatomic, assign) id<T3ImageDownloaderDelegate> delegate;
-
 - (id) initWithDelegate:(id<T3ImageDownloaderDelegate>) delegate;
 - (void) downloadFrom:(NSString*) url;
 
