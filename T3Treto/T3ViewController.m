@@ -26,6 +26,8 @@
 
 @synthesize imageDownloader, url, scrollView;
 
+#pragma mark view controller overrides
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,6 +43,19 @@
 {
     return YES;
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll
+{
+    NSInteger page = scrollView.contentOffset.x / landscape.size.width;
+    [self loadImageOnPage:page];
+}
+
+#pragma mark implementation
 
 - (void) addUrls
 {
@@ -90,10 +105,7 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
+#pragma mark image download protocol implementation
 
 - (void) imageDownloadProgress: (float) progress
 {
@@ -117,11 +129,7 @@
     self.scrollView.scrollEnabled = YES;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll
-{
-    NSInteger page = scrollView.contentOffset.x / landscape.size.width;
-    [self loadImageOnPage:page];
-}
+#pragma mark destructor
 
 - (void)dealloc
 {
