@@ -30,11 +30,16 @@
 {
     [super viewDidLoad];
     imageDownloader = [[T3ImageDownloader alloc] initWithDelegate:self];
-    landscape = CGRectMake(0, 20, self.view.frame.size.height, self.view.frame.size.width);
+    landscape = CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.width);
     [self addUrls];
     [self addScrollView];
     [self addImageViews:url.count];
     [self loadImageOnPage:0];
+}
+
+- (BOOL) prefersStatusBarHidden
+{
+    return YES;
 }
 
 - (void) addUrls
