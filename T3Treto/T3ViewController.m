@@ -7,7 +7,6 @@
 //
 
 #import "T3ViewController.h"
-#import "T3ScrollView.h"
 
 @interface T3ViewController ()
 
@@ -50,7 +49,7 @@
 
 - (void) addScrollView
 {
-    scrollView = [[T3ScrollView alloc] initWithFrame:landscape];
+    scrollView = [[UIScrollView alloc] initWithFrame:landscape];
     scrollView.pagingEnabled = YES;
     NSUInteger numberOfViews = url.count;
     scrollView.contentSize = CGSizeMake(landscape.size.width * numberOfViews, landscape.size.height);

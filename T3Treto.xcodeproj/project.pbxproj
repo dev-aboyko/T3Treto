@@ -22,7 +22,6 @@
 		7721C58118AEFA4200DA4846 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7721C57F18AEFA4200DA4846 /* InfoPlist.strings */; };
 		7721C58318AEFA4200DA4846 /* T3TretoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7721C58218AEFA4200DA4846 /* T3TretoTests.m */; };
 		7721C58E18AF68A400DA4846 /* T3ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7721C58D18AF68A400DA4846 /* T3ImageDownloader.m */; };
-		777B29B218B0FBA600685C9B /* T3ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 777B29B118B0FBA600685C9B /* T3ScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +56,6 @@
 		7721C58218AEFA4200DA4846 /* T3TretoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = T3TretoTests.m; sourceTree = "<group>"; };
 		7721C58C18AF68A400DA4846 /* T3ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3ImageDownloader.h; sourceTree = "<group>"; };
 		7721C58D18AF68A400DA4846 /* T3ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3ImageDownloader.m; sourceTree = "<group>"; };
-		777B29B018B0FBA600685C9B /* T3ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T3ScrollView.h; sourceTree = "<group>"; };
-		777B29B118B0FBA600685C9B /* T3ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T3ScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +115,6 @@
 		7721C55D18AEFA4200DA4846 /* T3Treto */ = {
 			isa = PBXGroup;
 			children = (
-				777B29B018B0FBA600685C9B /* T3ScrollView.h */,
-				777B29B118B0FBA600685C9B /* T3ScrollView.m */,
 				7721C56618AEFA4200DA4846 /* T3AppDelegate.h */,
 				7721C56718AEFA4200DA4846 /* T3AppDelegate.m */,
 				7721C56918AEFA4200DA4846 /* Main.storyboard */,
@@ -261,7 +256,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7721C56E18AEFA4200DA4846 /* T3ViewController.m in Sources */,
-				777B29B218B0FBA600685C9B /* T3ScrollView.m in Sources */,
 				7721C56418AEFA4200DA4846 /* main.m in Sources */,
 				7721C56818AEFA4200DA4846 /* T3AppDelegate.m in Sources */,
 				7721C58E18AF68A400DA4846 /* T3ImageDownloader.m in Sources */,
