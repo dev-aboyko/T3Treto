@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     imageDownloader = [[T3ImageDownloader alloc] initWithDelegate:self];
-    landscape = CGRectMake(0, 20, self.view.frame.size.height, self.view.frame.size.width - 20);
+    landscape = CGRectMake(0, 20, self.view.frame.size.height, self.view.frame.size.width);
     [self addUrls];
     [self addScrollView];
     [self addImageViews:url.count];
